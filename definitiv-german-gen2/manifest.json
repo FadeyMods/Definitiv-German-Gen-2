@@ -1,0 +1,58 @@
+{
+  "id": "definitiv-german-gen2",
+  "name": "📀🇩🇪 Definitiv German 💬✅ Gen 2",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "permissions": [
+    "engine_internals"
+  ],
+  "category": "Translation",
+  "game_version": ">=0.0.0-0 <2.0.0",
+  "priority": 50,
+  "games": [
+    "gold",
+    "silver",
+    "crystal"
+  ],
+  "optional_imports": [
+    {
+      "id": "gold_de",
+      "name": "Pokémon Goldene Edition (deutsch)",
+      "description": "Nur für Goldene Edition nötig. Deine deutsche ROM: Pokemon - Goldene Edition (Germany) (SGB Enhanced) (GB Compatible).gbc",
+      "file": "gold_de.gbc",
+      "md5": [
+        "7542ec9b695d4fe38adfdaaa57364d83"
+      ],
+      "size": 2097152
+    },
+    {
+      "id": "silber_de",
+      "name": "Pokémon Silberne Edition (deutsch)",
+      "description": "Nur für Silberne Edition nötig. Deine deutsche ROM: Pokemon - Silberne Edition (Germany) (SGB Enhanced) (GB Compatible).gbc",
+      "file": "silber_de.gbc",
+      "md5": [
+        "f1f013cd591bc4ea77305bbc9f8cbb3c"
+      ],
+      "size": 2097152
+    },
+    {
+      "id": "kristall_de",
+      "name": "Pokémon Kristall-Edition (deutsch)",
+      "description": "Nur für Kristall-Edition nötig. Deine deutsche ROM: Pokemon - Kristall-Edition (Germany).gbc",
+      "file": "kristall_de.gbc",
+      "md5": [
+        "a35c0fa2e3b3d1c1779cd9f2352bc427"
+      ],
+      "size": 2097152
+    }
+  ],
+  "github": "FadeyMods/Definitiv-German-Gen-2",
+  "dependencies": [],
+  "optional_dependencies": [],
+  "conflicts": [
+    "deutsch-gen2"
+  ],
+  "description": "Macht Gold, Silber und Kristall komplett deutsch – Texte, Namen, Schrift und Grafiken werden beim Start aus DEINEN deutschen ROMs gelesen. Der Mod selbst enthält keine ROM-Inhalte."
+}

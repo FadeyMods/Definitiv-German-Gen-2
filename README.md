@@ -4,6 +4,15 @@ Komplett deutsche Goldene, Silberne und Kristall-Edition für [gen1recomp](https
 
 *A full German translation mod for gen1recomp (Gold, Silver, Crystal). It reads everything from your own German ROMs.*
 
+## Neu in Version 1.0.1
+
+Alles verglichen mit den deutschen Originalen im Emulator, vom Einschalten bis ins Spiel:
+
+- Uhr stellen am Spielanfang: „spät es ist?“ und „verschlafen!“ fehlten, jetzt vollständig
+- „Wow!  0 min.?“ mit richtigem Abstand wie im Original
+- Kristall: Texte der Kampfturm-Trainer auf Deutsch (neu in gen1recomp 0.3.80)
+- Neue feste Texte aus gen1recomp 0.3.80 übersetzt
+
 ## Neustart: Version 1.0.0
 
 Das Projekt wurde komplett neu aufgebaut. Der Mod hat dafür eine **neue ID** (`definitiv-german-gen2`) und beginnt wieder bei **Version 1.0.0**.
@@ -25,7 +34,7 @@ Beim Start liest er deine eigene deutsche ROM und baut daraus alles zusammen.
 
 ## Voraussetzungen
 
-- gen1recomp **0.3.74** oder neuer, mit importierter englischer ROM wie gewohnt
+- gen1recomp **0.3.74** oder neuer (getestet mit 0.3.80), mit importierter englischer ROM wie gewohnt
 - Deine **deutsche ROM** der Edition, die du spielen willst (jede Edition braucht nur ihre eigene):
 
 | Edition | MD5 |
@@ -36,7 +45,7 @@ Beim Start liest er deine eigene deutsche ROM und baut daraus alles zusammen.
 
 ## Installation
 
-1. Im Launcher unter **MODS** den Mod suchen und installieren – oder `definitiv-german-gen2-1.0.0.zip` aus den Releases über **Import mod .zip** einspielen.
+1. Im Launcher unter **MODS** den Mod suchen und installieren – oder `definitiv-german-gen2-1.0.1.zip` aus den Releases über **Import mod .zip** einspielen.
 2. In den **Details** des Mods die deutsche(n) ROM(s) auswählen. Der Launcher prüft sie und legt sie beim Mod ab.
 3. Mod aktivieren und spielen.
 

@@ -77,13 +77,19 @@ return function(W)
   -- Adressen aus dem Rezept (nur Bank/Adresse je Symbol).  Die Bilder landen per Assets.compose
   -- im Speicher; nichts wird auf die Platte geschrieben.
   local gfxMissing = {}
-  if R.gfx then
+  -- Erst nach dem Laden aller Mods bauen (Ereignis mods.loaded, vor dem ersten Bildschirm): das Lesen des
+  -- ROM-Manifests (RomManifest.decode) zieht im Port einen JSON-Leser aus src/link nach; waehrend des Ladens
+  -- wuerde der Port das dem Mod als Netzwerk-Zugriff anrechnen.  Hoehere Prioritaet als daten.lua (Diplom).
+  local function bauen()
     local ok, err = pcall(function()
       local Ex = require("src.import.RomExtractorGen2")
       local man = require("src.import.RomManifest").decode(ver)
+      -- Stufen, die bewusst nur zum Teil umgelenkt sind (R.gfx.teilweise, z. B. Kristall-Mobilgrafiken: nur die
+      -- Geheimgabe; der Rest gehoert zum Mobil-Adapter, den es ausserhalb Japans nicht gab)
+      local stufe, teilweise = nil, R.gfx.teilweise or {}
       local symbols = setmetatable({}, { __index = function(_, name)
         -- nur echte Luecken melden (Symbol gibt es in dieser Edition)
-        if man.symbols and man.symbols[name] then gfxMissing[#gfxMissing + 1] = name end
+        if man.symbols and man.symbols[name] and not teilweise[stufe] then gfxMissing[#gfxMissing + 1] = name end
         return nil
       end })
       for name, loc in pairs(R.gfx.symbols) do symbols[name] = { loc[1], loc[2] } end
@@ -117,6 +123,7 @@ return function(W)
       local origSave = IW.save
       IW.save = function(image, path) images[path] = image end
       for _, stage in ipairs(R.gfx.stages) do
+        stufe = stage
         local okS, e = pcall(ex[stage], ex)
         if not okS then log:warn("Deutsch Gen 2: Grafikstufe %s: %s", stage, tostring(e)) end
       end
@@ -169,6 +176,10 @@ return function(W)
     end)
     if not ok then log:warn("Deutsch Gen 2: Grafiken: %s", tostring(err)) end
     if #gfxMissing > 0 then log:warn("Deutsch Gen 2: Symbole ohne DE-Adresse: %s", concat(gfxMissing, ", ")) end
+    log:info("Deutsch Gen 2: Grafiken %d", counts.gfx or 0)
+  end
+  if R.gfx then
+    if not pcall(function() mod.events:on("mods.loaded", bauen, 100) end) then bauen() end
   end
 
 end

@@ -40,8 +40,10 @@ return {
   },
   gfx = {
     skip = { "fonts/font.png", "fonts/font_extra.png", "fonts/frames.png", "fonts/unown_font.png" },
-    stages = { "extractTitle", "extractMenuGfx", "extractTilesets", "extractDiploma", "extractCredits", "extractFont" },
+    stages = { "extractTitle", "extractMenuGfx", "extractTilesets", "extractDiploma", "extractCredits", "extractFont", "extractMobileGfx" },
+    teilweise = { extractMobileGfx = true },
     symbols = {
+      MysteryGiftGFX = { 65, 21079 },   -- GEHEIMGABE / GESCHENK (Stufe extractMobileGfx)
       AerodactylPuzzleLZ = { 56, 23043 },
       AnimateFlowerTile = { 63, 17773 },
       ["AnimateFlowerTile.FlowerTileFrames"] = { 63, 17804 },

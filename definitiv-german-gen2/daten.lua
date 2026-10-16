@@ -29,7 +29,9 @@ return function(W)
       local D = require("src.core.gen2.Decorations")
       local N = {}
       for en, parts in pairs(deco.names) do N[en] = T(parts) end
-      local function de(en) return N[en] or en end
+      local function de(en) return W.nachText(N, en) or en end
+      -- Namensteile ueber ihre Pruefsumme (englische Port-Texte stehen nicht im Mod)
+      local function teil(h) return N[h] end
       local function monDE(base, monName)
         if monName then return monName(base) end
         local G = rawget(_G, "Game")
@@ -42,16 +44,21 @@ return function(W)
         local attr = D.attributes(decoId)
         if not attr then return D._deutschName(decoId, monName) end
         local base, t = attr.name, attr.type
-        if t == 2 then return de(base) .. de(" BED") end
-        if t == 3 then return de(base) .. de(" CARPET") end
-        if t == 4 then return monDE(base, monName) .. de(" POSTER") end
-        if t == 5 then return monDE(base, monName) .. de(" DOLL") end
-        if t == 6 then return de("BIG ") .. monDE(base, monName) end
+        -- " BED", " CARPET", " POSTER", " DOLL", "BIG " (Port: Decorations.name)
+        local bett, teppich, poster, puppe, gross = teil("~983569060004"), teil("~57f4960c0007"),
+          teil("~7c09af4a0007"), teil("~c69a7a3a0005"), teil("~cd76bafb0004")
+        if t == 2 and bett then return de(base) .. bett end
+        if t == 3 and teppich then return de(base) .. teppich end
+        if t == 4 and poster then return monDE(base, monName) .. poster end
+        if t == 5 and puppe then return monDE(base, monName) .. puppe end
+        if t == 6 and gross then return gross .. monDE(base, monName) end
+        if t >= 2 and t <= 6 then return D._deutschName(decoId, monName) end
         return de(base)
       end
       -- Kategorien: Reihenfolge von Decorations.CATEGORIES (BED, CARPET, PLANT, POSTER, GAME CONSOLE,
       -- ORNAMENT, BIG DOLL) = Reihenfolge der DE-Strings; danach EXIT
-      local KAT = { BED = 1, CARPET = 2, PLANT = 3, POSTER = 4, ["GAME CONSOLE"] = 5, ORNAMENT = 6, ["BIG DOLL"] = 7 }
+      local KAT = { ["~9563634c0003"] = 1, ["~69efe6120006"] = 2, ["~8bb69c320005"] = 3, ["~5e81c5dc0006"] = 4,
+        ["~f490d6aa000c"] = 5, ["~c65c7ad50008"] = 6, ["~f6da27760008"] = 7 }   -- Pruefsummen der Kategorien
       local DM = require("src.ui.gen2.DecorationMenu")
       local Strings = require("src.core.Strings")
       DM._deutschKategorien = DM._deutschKategorien or DM.drawPanel
@@ -60,7 +67,7 @@ return function(W)
         local Chrome = require("src.ui.gen2.Chrome")
         local p, exit = Chrome.print, Strings("EXIT")
         Chrome.print = function(text, x, y, ...)
-          local i = KAT[text]
+          local i = type(text) == "string" and KAT[W.pruefsumme(text)]
           if i and deco.cats[i] then text = T(deco.cats[i])
           elseif text == exit and deco.cats[8] then text = T(deco.cats[8]) end
           return p(text, x, y, ...)

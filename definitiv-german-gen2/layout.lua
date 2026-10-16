@@ -19,8 +19,9 @@ return function(W)
       local flagged = { [YN.from .. ":7"] = true }   -- Standardlage (14,7) aus YesNoBox
       local recent = {}
       local depth = 0
-      local JA = R.strings and R.strings["YES"] and T(R.strings["YES"]) or "YES"
-      local NEIN = R.strings and R.strings["NO"] and T(R.strings["NO"]) or "NO"
+      -- "YES"/"NO" des Ports ueber ihre Pruefsumme im Katalog-Rezept
+      local JA = R.strings and R.strings["~9355e4f00003"] and T(R.strings["~9355e4f00003"])
+      local NEIN = R.strings and R.strings["~41e68bba0002"] and T(R.strings["~41e68bba0002"])
       local function yesText(t) return t == JA end
       local function noText(t) return t == NEIN end
       local function boxAt(tx, ty)
@@ -134,7 +135,7 @@ return function(W)
     local Chrome = require("src.ui.gen2.Chrome")
     local Marquee = require("src.ui.Marquee")
     local colon = R.optionsColon or 10
-    local INIT = R.strings and R.strings["SPEED"] and T(R.strings["SPEED"]) or "SPEED"
+    local INIT = R.strings and R.strings["~5e35d5e00005"] and T(R.strings["~5e35d5e00005"])   -- "SPEED"
     local TEMPO = R.optionsSpeedGroup and T(R.optionsSpeedGroup) or "TEMPO"
     if OM._deutschCols or colon == 10 then return end
     OM._deutschCols = true

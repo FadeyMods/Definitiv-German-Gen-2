@@ -1,40 +1,30 @@
-# 📀🇩🇪 Definitiv German 💬✅ Gen 2
+<p align="center"><img src="banner.png" alt="Definitiv German Gen 2" width="100%"></p>
 
-Komplett deutsche Goldene, Silberne und Kristall-Edition für [gen1recomp](https://github.com/bryanthaboi/gen1recomp) – so, als wäre die englische ROM die deutsche.
+# Definitiv German Gen 2
+
+Komplett deutsche Goldene, Silberne und Kristall-Edition für [gen1recomp](https://github.com/bryanthaboi/gen1recomp) – so, als wäre
+die englische ROM die deutsche.
 
 *A full German translation mod for gen1recomp (Gold, Silver, Crystal). It reads everything from your own German ROMs.*
-
-## Neu in Version 1.0.1
-
-Alles verglichen mit den deutschen Originalen im Emulator, vom Einschalten bis ins Spiel:
-
-- Uhr stellen am Spielanfang: „spät es ist?“ und „verschlafen!“ fehlten, jetzt vollständig
-- „Wow!  0 min.?“ mit richtigem Abstand wie im Original
-- Kristall: Texte der Kampfturm-Trainer auf Deutsch (neu in gen1recomp 0.3.80)
-- Neue feste Texte aus gen1recomp 0.3.80 übersetzt
-
-## Neustart: Version 1.0.0
-
-Das Projekt wurde komplett neu aufgebaut. Der Mod hat dafür eine **neue ID** (`definitiv-german-gen2`) und beginnt wieder bei **Version 1.0.0**.
-Wer die alte Version (`deutsch-gen2`, 2.x) installiert hat: **bitte den alten Mod entfernen** und diesen neu installieren.
-Der Launcher meldet einen Konflikt, falls beide gleichzeitig aktiv sind.
 
 ## Was der Mod macht
 
 - **Alle Texte** – Dialoge, Kämpfe, Menüs, Pokédex-Einträge, Abspann – im Wortlaut der deutschen Originale
 - **Alle Namen** – Pokémon, Attacken, Items, Trainer, Typen, Orte
 - **Deutsche Schrift** – Umlaute, ß und die Sonderzeichen der deutschen Spiele
-- **Deutsche Grafiken** – Titelbild, Beutel, PokéCOM, Trainerpass, Pokédex, Diplom, Intro und Icognito-Szenen
+- **Deutsche Grafiken** – Titelbild, Beutel, PokéCOM, Trainerpass, Pokédex, Diplom, Intro und Icognito-Szenen, Kristall: Geheimgabe
 - **Deutsche Anordnung** – Menüs und Kästen sitzen wie im deutschen Original
+- **Zusätze von gen1recomp** – Mod-Verwaltung, Optionen, Link- und Online-Bereich (Union-Kampf und -Tausch) auf
+  Deutsch; der Launcher bleibt englisch
 
 ## Keine ROM-Inhalte enthalten
 
-Der Mod enthält **keine Texte oder Grafiken der Spiele**. Er bringt nur Code und „Rezepte“ mit (Positionen in der ROM).
-Beim Start liest er deine eigene deutsche ROM und baut daraus alles zusammen.
+Der Mod enthält **keine Texte oder Grafiken der Spiele**. Er bringt nur Code und „Rezepte“ mit (Positionen in der
+ROM). Beim Start liest er deine eigene deutsche ROM und baut daraus alles zusammen.
 
 ## Voraussetzungen
 
-- gen1recomp **0.3.74** oder neuer (getestet mit 0.3.80), mit importierter englischer ROM wie gewohnt
+- gen1recomp (getestet mit **0.3.89**), mit importierter englischer ROM wie gewohnt
 - Deine **deutsche ROM** der Edition, die du spielen willst (jede Edition braucht nur ihre eigene):
 
 | Edition | MD5 |
@@ -45,8 +35,16 @@ Beim Start liest er deine eigene deutsche ROM und baut daraus alles zusammen.
 
 ## Installation
 
-1. Im Launcher unter **MODS** den Mod suchen und installieren – oder `definitiv-german-gen2-1.0.1.zip` aus den Releases über **Import mod .zip** einspielen.
+1. Im Launcher unter **MODS** den Mod suchen und installieren – oder die `.zip` aus dem
+   [neuesten Release](https://github.com/FadeyMods/Definitiv-German-Gen-2/releases/latest) über
+   **Import mod .zip** einspielen.
 2. In den **Details** des Mods die deutsche(n) ROM(s) auswählen. Der Launcher prüft sie und legt sie beim Mod ab.
 3. Mod aktivieren und spielen.
 
-Gen 1 und Gen 3 gibt es als eigene Mods (Definitiv German Gen 1 / Gen 3).
+Falls noch der ältere Mod `deutsch-gen2` installiert ist: bitte entfernen – der Launcher meldet sonst einen
+Konflikt.
+
+Was sich in einer Version geändert hat, steht im jeweiligen
+[Release](https://github.com/FadeyMods/Definitiv-German-Gen-2/releases).
+
+Weitere Generationen: [Definitiv German Gen 1](https://github.com/FadeyMods/Definitiv-German-Gen-1) · [Definitiv German Gen 3](https://github.com/FadeyMods/Definitiv-German-Gen-3)

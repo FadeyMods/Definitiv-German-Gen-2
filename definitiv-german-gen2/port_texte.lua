@@ -46,7 +46,7 @@ return function(W)
     end)
   end
 
-  -- Fahrstuhl: der Port druckt "Now on:" (Elevator_CurrentFloorText) ohne Strings(); die DE-ROM hat dort
+  -- Fahrstuhl: der Port druckt die Stockwerkzeile (Elevator_CurrentFloorText) ohne Strings(); die DE-ROM hat dort
   -- "Im" (Kristall) / "im" (Gold/Silber) an derselben Stelle (1,2) -- Text aus R.strings
   pcall(function()
     local EM = require("src.ui.gen2.ElevatorMenu")
@@ -56,7 +56,7 @@ return function(W)
       local Chrome = require("src.ui.gen2.Chrome")
       local p = Chrome.print
       Chrome.print = function(text, x, y, ...)
-        if text == "Now on:" then text = Strings(text) end
+        if type(text) == "string" and W.pruefsumme(text) == "~960612ee0007" then text = Strings(text) end
         return p(text, x, y, ...)
       end
       local ok, e = pcall(EM._deutschDrawPanel, self, ...)
@@ -146,7 +146,7 @@ return function(W)
     end
   end)
 
-  -- Ruhmeshalle-PC: Nummer (_HallOfFamePC.print_num_hof) und "PLAY TIME" (fest im Code, ohne Strings() --
+  -- Ruhmeshalle-PC: Nummer (_HallOfFamePC.print_num_hof) und Spielzeit-Zeile (fest im Code, ohne Strings() --
   -- DE-ROM HOF_AnimatePlayerPic.PlayTime: "SPIELZEIT")
   pcall(function()
     local HF = require("src.ui.gen2.HallOfFame")
@@ -167,7 +167,7 @@ return function(W)
       HF.playerPlacements = function(...)
         local out = HF._deutschPlayer(...)
         for _, e in ipairs(out or {}) do
-          if e.text == "PLAY TIME" then e.text = Strings("PLAY TIME") end
+          if type(e.text) == "string" and W.pruefsumme(e.text) == "~540ce2b00009" then e.text = Strings(e.text) end
         end
         return out
       end

@@ -1,8 +1,8 @@
 -- Zeichensatz der deutschen Editionen Gold, Silber, Kristall.
 --
--- Der deutsche Font belegt einige Codes anders als der englische (geprüft am Font der DE-ROM, Raster in
--- Test/aus/extrakt/crystal/font_raster_de.png): wo das Englische japanische Restzeichen und die Ligaturen 'd 'l 'm
--- 'r 's 't 'v hat, stehen Akzentbuchstaben, ß und Apostroph-Folgen; é liegt auf $BC statt $EA, $E4 ist „+“.
+-- Der deutsche Font belegt einige Codes anders als der englische (geprüft am Font der DE-ROM): wo das Englische
+-- japanische Restzeichen und die Ligaturen 'd 'l 'm 'r 's 't 'v hat, stehen Akzentbuchstaben, ß und Apostroph-
+-- Folgen; é liegt auf $BC statt $EA, $E4 ist „+“.
 -- Diese Tabelle sagt nur, welcher Code welches Zeichen ist – die Glyphen kommen aus der ROM des Spielers.
 local Z = {}
 
@@ -24,10 +24,14 @@ FREI[0xE4] = true
 FREI[0xEA] = true
 Z.FREI = FREI
 
+-- Lesen: $EA bleibt „é“ – der deutsche Font hat dort unverändert ein é (dieselbe Glyphe wie $BC), und Gold/Silber DE
+-- benutzen es (Team-Rocket-Eid „Die Pok$EAmon dienen …“).  Geschrieben wird é weiter als $BC (fontCharmap).
+local LESEN = { [0xEA] = true }
+
 function Z.anwenden(manifest)
   local cm = {}
   for k, v in pairs(manifest.charmap or {}) do
-    if not FREI[tonumber(k)] then cm[k] = v end
+    if not FREI[tonumber(k)] or LESEN[tonumber(k)] then cm[k] = v end
   end
   for code, z in pairs(Z.CODES) do cm[tostring(code)] = z end
   manifest.charmap = cm

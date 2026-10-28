@@ -1,6 +1,10 @@
--- Rezept crystal: Adressen der deutschen ROM für die Symbole des Port-Manifests (erzeugt von
--- Test/werkzeug/rezept_gb.py aus der Paarung; Belege in Test/aus/paarung).  Enthält keine ROM-Inhalte.
+-- Rezept crystal (Kristall-Edition DE): Adressen in der deutschen ROM und Zuordnungen für kern.lua und
+-- gemeinsam.lua.  Von Hand gepflegt; enthält keine ROM-Inhalte, nur Bank/Adresse, Port-Schlüssel und
+-- Prüfsummen englischer Port-Texte (gemeinsam.lua G.pruefsumme).  Bank/Adresse stehen dezimal oder hex.
+-- Port-Symbole ohne DE-Gegenstück (fehlen in s mit Absicht): GetAnimatedFrontpic, GetChrisBackpic, GetMonBackpic,
+--   GetMonFrontpic, Music_PostCredits, TradeAnim_ShowFrontpic
 return {
+  -- Port-Symbol (Manifest des Ports) → { Bank, Adresse } in der DE-ROM
   s = {
     ["AbraBackpic"] = { 86, 25647 },
     ["AbraFrontpic"] = { 81, 30783 },
@@ -173,6 +177,8 @@ return {
     ["CardFlipOffButtonGFX"] = { 56, 19704 },
     ["CardFlipOnButtonGFX"] = { 56, 19720 },
     ["CardFlipTilemap"] = { 56, 20750 },
+    ["CardFlip_DisplayCardFaceUp.Deck"] = { 56, 17497 },
+    ["CardFlip_DisplayCardFaceUp.FaceUpCardTilemap"] = { 56, 17467 },
     ["CardLargeSpriteAndFolderGFX"] = { 94, 25023 },
     ["CardSpriteGFX"] = { 94, 26191 },
     ["CardStatusGFX"] = { 9, 21801 },
@@ -1069,6 +1075,7 @@ return {
     ["PinsirBackpic"] = { 82, 26657 },
     ["PinsirFrontpic"] = { 75, 31711 },
     ["PinsirPokedexEntry"] = { 110, 23128 },
+    ["PlaceCardFaceDown.FaceDownCardTilemap"] = { 56, 17358 },
     ["PlaceUnownPrinterFrontpic"] = { 5, 28114 },
     ["PlayerHitTimesText"] = { 32, 21705 },
     ["PokeComNurseDayText"] = { 108, 16609 },
@@ -2352,12 +2359,40 @@ return {
     ["_YourMonHasGrownText"] = { 111, 24667 },
     ["_YourMonsHPWasHealedText"] = { 111, 20894 },
   },
-  d = {
-  },
-  e = {
-  },
-  -- Port-Texte, deren englische Vorlage in der ROM steht (Test/werkzeug/strings_*_gb.py)
+  -- Port-Texte, deren Vorlage in der ROM steht: [Prüfsumme des englischen Katalog-Schlüssels] = Quelle
+  -- (gemeinsam.lua G.porttexte_lesen: "t" Dialog-Label, "k" zusammengesetzt, "r" ROM-Zeichenkette)
   p = {
+    ["~d77dcb95000e"] = { "k", { { "t", "WasDefrostedText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
+    ["~f782803f001d"] = { "k", { { "t", "ShedLeechSeedText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
+    ["~d3978f120025"] = { "k", { { "t", "DestinyBondEffectText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
+    ["~e513a0b20022"] = { "k", { { "t", "BecameConfusedText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
+    ["~0f589b7a0016"] = { "k", { { "t", "BattleText_TargetWasHitByFutureSight", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s", "%s" } },
+    ["~5b0a52670013"] = { "t", "DownpourText" },
+    ["~ef0e9d070024"] = { "t", "_PCGottaHavePokemonText" },
+    ["~edf690f60014"] = { "t", "_MysteryGiftCanceledText" },
+    ["~98629e3e0013"] = { "k", { { "t", "_ReceiveItemText", -1, {  }, { ["{STRBUF}"] = { 1, 2 } } } }, { "%s", "%s" } },
+    ["~b9d3f1e8001c"] = { "k", { { "t", "CoinVendor_IntroText", 0, {  }, {  } } }, {  } },
+    ["~0658762e000a"] = { "r", 1, 16421, 1, 0, 0 },
+    ["~94f3e71b0004"] = { "k", { { "a", 1 } }, { "%s" } },
+    ["~2aa367890017"] = { "k", { { "r", 28, 28394, 7, 0, 0 }, { "a", 1 }, { "r", 28, 28414, 7, 0, 0 } }, { "%s" } },
+    ["~4f34f7c1000a"] = { "k", { { "a", 1 }, { "r", 56, 30051, 1, 0, 0 } }, { "%s" } },
+    ["~1aece79a0007"] = { "k", { { "a", 1 }, { "r", 56, 30060, 1, 0, 0 } }, { "%s" } },
+    ["~1e630eaf0009"] = { "k", { { "a", 1 }, { "r", 36, 24116, 1, 0, 0 } }, { "%s" } },
+    ["~1f88b1800007"] = { "k", { { "r", 5, 22010, 1, 0, 0, { ["{PLAYER}"] = { 1 } } } }, { "%s" } },
+    ["~d16b6e040009"] = { "k", { { "r", 1, 24316, 1, 0, 0 }, { "l", " " }, { "a", 1 } }, { "%s" } },
+    ["~719cdbe20007"] = { "k", { { "a", 1 }, { "l", " " }, { "r", 36, 18593, 1, 0, 0 } }, { "%d" } },
+    ["~09b704db003e"] = { "r", 19, 25559, 1, 0, 0 },
+    ["~ad4f13e0004e"] = { "r", 19, 25613, 1, 0, 0 },
+    ["~46984528003b"] = { "r", 19, 25664, 1, 0, 0 },
+    ["~508bb7e80032"] = { "r", 19, 25712, 1, 0, 0 },
+    ["~8b97d2a0000b"] = { "k", { { "r", 111, 19539, 2, 1, 0 }, { "a", 1 }, { "r", 111, 19549, 7, 0, 0 } }, { "%s" } },
+    ["~c50cf139000e"] = { "k", { { "r", 9, 20399, 3, 0, 0 }, { "a", 1 } }, { "%02d" } },
+    ["~35d55781000c"] = { "r", 4, 26424, 1, 0, 0 },
+    ["~2e99d1e10039"] = { "k", { { "a", 1 }, { "r", 70, 27461, 7, 0, 0 } }, { "%s" } },
+    ["~019ac101000a"] = { "k", { { "a", 1 }, { "l", " " }, { "r", 36, 18564, 1, 0, 0 } }, { "%s" } },
+    ["~0b95248f0043"] = { "t", "_OakTimeWokeUpText" },
+    ["~4b6e7893000e"] = { "k", { { "t", "_OakTimeWhoaMinutesText", -1, {  }, {  } }, { "l", " " }, { "a", 1 }, { "l", " " }, { "r", 36, 18593, 1, 0, 0 }, { "t", "_OakTimeMinutesQuestionMarkText", -1, {  }, {  } } }, { "%2d" } },
+    ["~5860cabb0009"] = { "k", { { "t", "_OakTimeWhatHoursText", -1, {  }, {  } }, { "l", "\n" }, { "a", 1 }, { "t", "_OakTimeHoursQuestionMarkText", -1, {  }, {  } } }, { "%s" } },
     ["~000fcda80017"] = { "t", "BattleText_TheSandstormSubsided" },
     ["~00c3524d0012"] = { "k", { { "a", 1 }, { "t", "_OakTimeIsItText", -1, {  }, {  } } }, { "%s" } },
     ["~0141e18d0025"] = { "k", { { "t", "_MomLeavingText2", -1, {  }, {  } } }, {  } },
@@ -2371,11 +2406,11 @@ return {
     ["~02bfbf040011"] = { "t", "_LC_Text9", 1 },
     ["~02e055cf0007"] = { "r", 19, 29180, 1, 0, 0 },
     ["~0316d4bd000d"] = { "r", 119, 22374, 2, 2, 0 },
-    ["~0380a28d000f"] = { "r", 113, 25372, 7, 0, 0 },
+    ["~0380a28d000f"] = { "r", 20, 17650, 1, 0, 0 },
     ["~03b0701a0011"] = { "t", "_OakTimeHowManyMinutesText" },
     ["~03c4ef050038"] = { "t", "_MayPassWhirlpoolText" },
     ["~040f39960018"] = { "t", "_RepelWoreOffText" },
-    ["~049234bc000d"] = { "k", { { "t", "_ItemStatRoseText", -1, {  }, { ["{STRBUF}"] = { 1, 2 } } } }, { "%s", "%s" } },
+    ["~049234bc000d"] = { "k", { { "t", "_ItemStatRoseText", -1, {  }, { ["{STRBUF}"] = { 2, 1 } } } }, { "%s", "%s" } },
     ["~04c3e2e3000e"] = { "r", 56, 27347, 1, 0, 0 },
     ["~04da9b760014"] = { "k", { { "a", 1 }, { "t", "_BattleMadeWhirlwindText", -1, {  }, {  } } }, { "%s" } },
     ["~04e9cb470010"] = { "t", "_PnP_RightForMeText", 1 },
@@ -2414,7 +2449,7 @@ return {
     ["~11bbb8cb0020"] = { "t", "_DeleterForgotMoveText" },
     ["~11bc26690015"] = { "k", { { "t", "_CuredOfPoisonText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~129e0efa0013"] = { "r", 16, 20142, 2, 0, 0 },
-    ["~129f36100015"] = { "k", { { "t", "_DeleterAskWhichMonText", -1, {  }, {  } } }, {  } },
+    ["~129f36100015"] = { "r", 20, 17664, 1, 0, 0 },
     ["~12fba28b0012"] = { "k", { { "t", "BattleText_MonIsAlreadyOut", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~1362ee0a0018"] = { "k", { { "t", "SuckedHealthText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
     ["~14616c330019"] = { "k", { { "t", "Text_Gained", -1, {  }, { ["{STRBUF}"] = { 1 } } }, { "t", "_ExpPointsText", -1, {  }, { ["{NUM}"] = { 2 } } } }, { "%s", "%d" } },
@@ -2423,7 +2458,7 @@ return {
     ["~15a807b7000f"] = { "k", { { "t", "_LC_Text8", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%05d" } },
     ["~15bc0a490008"] = { "t", "_OPT_PokemonChannelText" },
     ["~15f457c40020"] = { "k", { { "t", "SandstormHitsText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
-    ["~1628c3650010"] = { "r", 51, 16558, 1, 0, 0 },
+    ["~1628c3650010"] = { "r", 51, 16558, 9, 0, 0 },
     ["~169af00d0006"] = { "r", 57, 17415, 1, 0, 0 },
     ["~17727b2b0017"] = { "t", "_CantGetOffBikeText" },
     ["~17b99973000b"] = { "r", 17, 18807, 1, 0, 0 },
@@ -2439,7 +2474,7 @@ return {
     ["~1b186d0b0008"] = { "r", 5, 22049, 1, 0, 0 },
     ["~1b20e07e0008"] = { "r", 16, 18610, 9, 0, 0 },
     ["~1b430de00015"] = { "k", { { "t", "_AskForgetMoveText", 0, {  }, { ["{STRBUF}"] = { 1, 2 } } } }, { "%s", "%s" } },
-    ["~1be0327c000d"] = { "r", 47, 20064, 1, 0, 0 },
+    ["~1be0327c000d"] = { "r", 47, 20064, 9, 0, 0 },
     ["~1cbd43350015"] = { "k", { { "t", "ReceivedItemText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~1cfb4ffd0006"] = { "r", 13, 25766, 1, 0, 0 },
     ["~1d2a14d60015"] = { "k", { { "t", "Text_BattleFoeEffectActivate", -1, {  }, { ["{STRBUF}"] = { 2 }, ["{TARGET}"] = { 1 } } }, { "l", "\n" }, { "t", "_BattleStatSharplyFellText", -1, {  }, {  } } }, { "%s", "%s" } },
@@ -2510,7 +2545,7 @@ return {
     ["~2b0ec8340011"] = { "r", 16, 18621, 2, 1, 0 },
     ["~2b7ee1d00011"] = { "t", "_BallDontBeAThiefText" },
     ["~2b8845630018"] = { "t", "_UseHeadbuttText" },
-    ["~2bbb30170011"] = { "k", { { "t", "_ThrewAwayText", -1, { ["{NUM}"] = { "", "" } }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
+    ["~2bbb30170011"] = { "k", { { "t", "_ThrewAwayText", -1, {  }, { ["{NUM}"] = { 2 }, ["{STRBUF}"] = { 1 } } } }, { "%s", "%d" } },
     ["~2bf7c779001a"] = { "t", "_PlayersPCTurnOnText" },
     ["~2c14e869002e"] = { "t", "_OakRating02" },
     ["~2c3238130010"] = { "k", { { "t", "_EvolvedIntoText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
@@ -2646,7 +2681,7 @@ return {
     ["~5092b5f3000f"] = { "k", { { "t", "IsConfusedText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~51b79bb5001d"] = { "k", { { "t", "_TMHMNotCompatibleText", 0, {  }, { ["{STRBUF}"] = { 1, 2 } } } }, { "%s", "%s" } },
     ["~51d780a30019"] = { "k", { { "t", "_StoppedEvolvingText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
-    ["~5208a3a30010"] = { "r", 51, 16569, 1, 0, 0 },
+    ["~5208a3a30010"] = { "r", 51, 16569, 9, 0, 0 },
     ["~5227ddb7003b"] = { "t", "_OakRating16" },
     ["~52348e850006"] = { "t", "_GearEllipseText" },
     ["~52ac136f0019"] = { "t", "_PhoneWrongNumberText" },
@@ -2749,7 +2784,7 @@ return {
     ["~6c1ba3270017"] = { "k", { { "t", "HurtByCurseText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~6cb5d8380012"] = { "k", { { "t", "BattleText_TargetsEncoreEnded", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
     ["~6ceb4c990002"] = { "r", 9, 19532, 1, 0, 0 },
-    ["~6d065f91000f"] = { "r", 51, 16569, 1, 0, 0 },
+    ["~6d065f91000f"] = { "r", 51, 16569, 9, 0, 0 },
     ["~6d675842000f"] = { "k", { { "t", "_EnemyWithdrewText", -1, {  }, { ["{ENEMY}"] = { 1 }, ["{STRBUF}"] = { 2 } } } }, { "%s", "%s" } },
     ["~6d96b83b0010"] = { "t", "_RocketRadioText8", 1 },
     ["~6dd42b29000e"] = { "k", { { "t", "WasSeededText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
@@ -2846,7 +2881,7 @@ return {
     ["~845efcba0012"] = { "k", { { "t", "_RegisteredItemText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~84a90c250005"] = { "r", 57, 16961, 2, 13, 0 },
     ["~84eab81e0020"] = { "t", "_PlayersPCHowManyDepositText" },
-    ["~84f5b1400039"] = { "k", { { "t", "_SeerTradeText", -1, {  }, { ["{STRBUF}"] = { 1, 2, 3, 4, 5 } } } }, { "%s", "%s", "%s", "%s", "%s" } },
+    ["~84f5b1400039"] = { "k", { { "t", "_SeerTradeText", -1, {  }, { ["{STRBUF}"] = { 1, 2, 4, 5, 3 } } } }, { "%s", "%s", "%s", "%s", "%s" } },
     ["~85146ae40022"] = { "k", { { "t", "SubTookDamageText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
     ["~851980840012"] = { "r", 4, 26510, 1, 0, 0 },
     ["~85534b21001f"] = { "t", "_PlayersPCNoRoomDepositText" },
@@ -2865,6 +2900,7 @@ return {
     ["~87dce4db0058"] = { "k", { { "t", "_SeerMoreConfidentText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~87e02b260010"] = { "t", "_RocketRadioText10", 1 },
     ["~87e552520013"] = { "t", "BattleText_TheSunlightFaded" },
+    ["~884ef6730013"] = { "r", 16, 18535, 8, 0, 0 },
     ["~8946befa0006"] = { "t", "_SlotsStartText" },
     ["~899a493f0080"] = { "t", "_OakText5" },
     ["~8a3c37eb0004"] = { "r", 20, 30170, 1, 0, 0 },
@@ -2908,7 +2944,7 @@ return {
     ["~9519f32e001d"] = { "t", "_ItemCantUseOnEggText" },
     ["~9538fa28000c"] = { "k", { { "t", "BeatUpAttackText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~9569ee5d001c"] = { "t", "_PhoneJustTalkToThemText" },
-    ["~95da8dc00010"] = { "k", { { "t", "_ItemsDiscardedText", -1, { ["{NUM}"] = { "", "" } }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
+    ["~95da8dc00010"] = { "k", { { "t", "_ItemsDiscardedText", -1, {  }, { ["{NUM}"] = { 2 }, ["{STRBUF}"] = { 1 } } } }, { "%s", "%d" } },
     ["~960612ee0007"] = { "r", 4, 30012, 1, 0, 0 },
     ["~962579790016"] = { "k", { { "t", "SuckedHealthText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
     ["~96f7ebd60008"] = { "r", 1, 24330, 1, 0, 0 },
@@ -2932,7 +2968,7 @@ return {
     ["~9a103c0e0019"] = { "t", "_MomInsufficientFundsInWalletText" },
     ["~9a6bdc140003"] = { "r", 4, 16686, 1, 0, 0 },
     ["~9a97e50a000c"] = { "t", "_PnP_Text3", 1 },
-    ["~9a99259a0006"] = { "r", 5, 28091, 1, 0, 0 },
+    ["~9a99259a0006"] = { "r", 5, 28091, 9, 0, 0 },
     ["~9ad0c5df0017"] = { "k", { { "t", "HurtByBurnText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~9afa020e0009"] = { "k", { { "a", 1 }, { "r", 9, 27698, 1, 0, 0, {  } } }, { "%s" } },
     ["~9b7added001b"] = { "t", "_MobileTakeGoodCareOfMonText" },
@@ -3055,7 +3091,7 @@ return {
     ["~b7d3b4230013"] = { "k", { { "t", "HungOnText", -1, {  }, { ["{STRBUF}"] = { 2 }, ["{TARGET}"] = { 1 } } } }, { "%s", "%s" } },
     ["~b7dc06f70014"] = { "k", { { "t", "GettingPumpedText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~b7de3ced0020"] = { "t", "_NPCTradeCableText" },
-    ["~b821d6fe0012"] = { "k", { { "t", "_DeleterAskWhichMonText", -1, {  }, {  } } }, {  } },
+    ["~b821d6fe0012"] = { "r", 20, 17726, 1, 0, 0 },
     ["~b84ddfdb0026"] = { "k", { { "t", "_NewDexDataText", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
     ["~b86e9712001b"] = { "t", "_BuenaComeAgainText" },
     ["~b94e15060008"] = { "r", 57, 17522, 1, 0, 0 },
@@ -3092,7 +3128,7 @@ return {
     ["~c0ce73530008"] = { "t", "_OPT_GuardedText", 1 },
     ["~c0ef3aba001b"] = { "t", "_MoveBoulderText" },
     ["~c13619b50014"] = { "k", { { "t", "_DidNotLearnMoveText", -1, {  }, { ["{STRBUF}"] = { 1, 2 } } } }, { "%s", "%s" } },
-    ["~c13b736b0005"] = { "r", 20, 29698, 1, 0, 0 },
+    ["~c13b736b0005"] = { "k", { { "n", "pokemon", "EKANS" } }, {  } },
     ["~c1568074001d"] = { "t", "_AskWaterfallText" },
     ["~c174550b001c"] = { "t", "_BreedFriendlyText" },
     ["~c183e353000e"] = { "k", { { "t", "WasBurnedText", -1, {  }, { ["{TARGET}"] = { 1 } } } }, { "%s" } },
@@ -3209,13 +3245,13 @@ return {
     ["~de700a84001e"] = { "t", "_OakPCText2" },
     ["~df2e383d0015"] = { "r", 4, 26452, 1, 0, 0 },
     ["~dfbff3310012"] = { "k", { { "t", "_CardFlipPlayWithThreeCoinsText", -1, {  }, {  } } }, {  } },
-    ["~e01a76b40015"] = { "k", { { "t", "_YouDontHaveAMonText", -1, {  }, {  } } }, {  } },
+    ["~e01a76b40015"] = { "r", 20, 17737, 1, 0, 0 },
     ["~e02559e40004"] = { "r", 110, 20167, 1, 0, 0 },
     ["~e04da04b0020"] = { "k", { { "t", "DisabledNoMoreText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~e09d2f380024"] = { "t", "_MoveBoulderText" },
     ["~e0e2ef3d001a"] = { "t", "_BouldersMoveText" },
     ["~e0f8e5b60009"] = { "r", 4, 22392, 1, 0, 0 },
-    ["~e191b26f0016"] = { "k", { { "t", "_DeleterAskWhichMonText", -1, {  }, {  } } }, {  } },
+    ["~e191b26f0016"] = { "r", 20, 17639, 1, 0, 0 },
     ["~e1c99f870012"] = { "t", "_UseCutText" },
     ["~e1d659140012"] = { "t", "_RocketRadioText9" },
     ["~e1ff0dff000b"] = { "k", { { "t", "BattleText_MonFainted", -1, {  }, { ["{STRBUF}"] = { 1 } } } }, { "%s" } },
@@ -3321,31 +3357,46 @@ return {
     ["~ff7ebc520015"] = { "k", { { "t", "ForesawAttackText", -1, {  }, { ["{USER}"] = { 1 } } } }, { "%s" } },
     ["~ffdb08d8000a"] = { "r", 3, 25750, 1, 0, 0 },
   },
-  -- Port-Texte je Bildschirm (gleicher englischer Text, im Original andere ROM-Stelle)
+  -- Duellturm: MenuHeader von Menu_ChallengeExplanationCancel (mobile_5f, menu_coords)
+  turmmenue = { 0x5F, 0x528F },
+  -- Ruhmeshalle: Operand von `ld [hl], …` hinter „<ID>№“ in DisplayHOFMon (DE: „.“, EN: „/“)
+  hof_trenner = { 0x21, 0x67F6 },
+  -- Port-Texte, deren ROM-Fassung andere Trenner hat, als der Port erwartet: { alt, neu } (kern.lua nach
+  -- G.porttexte_lesen) – Ei-Texte der Statusseite trennt der Port mit <NEXT>, die Kampfturm-Seiten mit
+  -- einer Leerzeile (BattleTowerMenu:refuse)
+  ersetzen = {
+    ["~09b704db003e"] = { "\n", "<NEXT>" },
+    ["~ad4f13e0004e"] = { "\n", "<NEXT>" },
+    ["~46984528003b"] = { "\n", "<NEXT>" },
+    ["~508bb7e80032"] = { "\n", "<NEXT>" },
+    ["~2e99d1e10039"] = { "\f", "\n\n" },
+  },
+  -- Port-Texte je Quelldatei des Ports (gleicher englischer Text, im Original andere ROM-Stelle)
   pk = {
     ["src/script/gen2/Specials.lua"] = { ["~328188740017"] = { "t", "_MomBankWhatDoYouWantToDoText" } },
-    ["src/ui/PokedexMenu.lua"] = { ["~84d9bc360004"] = { "r", 4, 16689, 1, 0, 0 } },
-    ["src/ui/TitleState.lua"] = { ["~4ae76f140006"] = { "r", 18, 23702, 1, 0, 0 } },
     ["src/ui/gen2/BankOfMom.lua"] = { ["~8ab92c550007"] = { "r", 5, 26304, 1, 0, 0 }, ["~3ebcfc170008"] = { "r", 5, 26296, 1, 0, 0 } },
     ["src/ui/gen2/BoxMenu.lua"] = { ["~8ab92c550007"] = { "r", 56, 25935, 1, 0, 0 }, ["~3ebcfc170008"] = { "r", 56, 26439, 1, 0, 0 } },
+    ["src/ui/gen2/ContestMenu.lua"] = { ["~ce00f04f0006"] = { "r", 51, 16551, 9, 0, 0 } },
     ["src/ui/gen2/Diploma.lua"] = { ["~bd490d800006"] = { "r", 119, 22365, 1, 0, 0 } },
     ["src/ui/gen2/ItemPcMenu.lua"] = { ["~328188740017"] = { "t", "_PlayersPCAskWhatDoText" } },
     ["src/ui/gen2/MailMenu.lua"] = { ["~84d9bc360004"] = { "r", 4, 28130, 1, 0, 0 } },
     ["src/ui/gen2/MainMenu.lua"] = { ["~4ae76f140006"] = { "r", 18, 23702, 1, 0, 0 } },
     ["src/ui/gen2/MartMenu.lua"] = { ["~84d9bc360004"] = { "r", 5, 24490, 1, 0, 0 } },
     ["src/ui/gen2/PackMenu.lua"] = { ["~84d9bc360004"] = { "r", 4, 16689, 1, 0, 0 } },
+    ["src/ui/gen2/Pokegear.lua"] = { ["~36e504b10006"] = { "r", 36, 20051, 1, 0, 0 } },
     ["src/ui/gen2/StartMenu.lua"] = { ["~84d9bc360004"] = { "r", 4, 26429, 1, 0, 0 }, ["~4ae76f140006"] = { "r", 4, 26410, 1, 0, 0 } },
   },
-  -- Trainerpass: Spalte des Spielernamens EN/DE (TrainerCard_PrintTopHalfOfCard, gen2_trainerpass.py)
+  -- Trainerpass: Spalte des Spielernamens EN/DE (TrainerCard_PrintTopHalfOfCard)
   trainerpass = { en_x = 7, de_x = 2 },
-  -- Dekorationsnamen: DecorationNames der DE-ROM + Prüfsummen der EN-Einträge in Listenreihenfolge (gen2_deko.py)
+  -- Dekorationsnamen: DecorationNames der DE-ROM + Prüfsummen der EN-Einträge in Listenreihenfolge
   deko = { 9, 27544, { "~52fabbdb0006", "~242b428b000b|~0a036b8d0009", "~e04bd1fa000a", "~7cc050f9000b", "~0887889d000a", "~450ff39f0008|~08b2a2d10007", "~aed4b47d0003", "~a0d55eee0009|~c6d58e260008", "~87c3b592000b|~9098ec12000a", "~3ab2c1ea000b|~fb8f25c2000a", "~75c94603000b|~bd195afd000a", "~3fc59882000d|~bb9728a2000c", "~0ccf7e930011|~1972a9a5000f", "~983569060004", "~57f4960c0007", "~7c09af4a0007", "~c69a7a3a0005", "~cd76bafb0004", "~b3d647830008", "~ebac60680007", "~0e927f6d0004", "~321ec81b0008", "~83ce97fc0003", "~2cb7370d0004", "~b0abcf490006", "~ab62935c0005" } },
-  -- Namensvorschläge des Spielers: .MenuData-Zeichenketten der DE-ROM (data/player_names.asm, gen2_namen.py)
+  -- Namensvorschläge des Spielers: .MenuData-Zeichenketten der DE-ROM (data/player_names.asm)
   namen2 = { m = { 34, 17088 }, w = { 34, 17134 } },
   -- Feste NPC-Namen: Telefonliste (NonTrainerCallerNames, Prüfsummen der EN-Einträge in ROM-Reihenfolge) und
-  -- Fang-Tutorial (CatchTutorial .Dude) der DE-ROM (gen2_npcnamen.py)
+  -- Fang-Tutorial (CatchTutorial .Dude) der DE-ROM
   npcnamen = { telefon = { 36, 17389, { "~6b53fea80003", "~a7834b1c0004", "~c90907e80008", "~8cbaf3440009" }, true }, kumpel = { 19, 26089, "~657313850004" } },
-  -- ROM-Literale: Menüwörter der Port-Skripte, die im Original aus der ROM kommen (gb_romliterale.py)
+  -- ROM-Literale: Menüwörter der Port-Skripte, die im Original aus der ROM kommen:
+  -- [Prüfsumme des englischen Literals] = { Bank, Adresse, Zeile } (gemeinsam.lua G.romliterale_lesen)
   pl = {
     ["~72754139000e"] = { 66, 29841, 0 },
     ["~666b2840000e"] = { 66, 29887, 0 },
@@ -3368,20 +3419,21 @@ return {
     ["~5e81c5dc0006"] = { 9, 26597, 0 },
     ["~ca52e1880004"] = { 5, 26339, 0 },
     ["~693d29640009"] = { 37, 28744, 0 },
+    ["~cf9ed64c0004"] = { 9, 19336, 0 },
   },
-  -- Spielstand-Fenster (Hauptmenü/Sichern): Versatz und rechter Rand EN/DE (gen2_spielstand.py)
+  -- Spielstand-Fenster (Hauptmenü/Sichern): Versatz und rechter Rand EN/DE
   spielstand = { en_x = 4, en_r = 15, de_x = 2, de_r = 17 },
+  -- Box-Untermenüs (Ablegen/Mitnehmen/Bewegen): linke Spalte des Menükopfs EN/DE
   boxmenue = { en_x = 9, de_x = 7 },
-  -- Beutel-Untermenü (Benutzen/Geben/Müll): Spalte der DE-ROM (gen2_spielstand.py, pack.asm)
+  -- Beutel-Untermenü (Benutzen/Geben/Müll): Spalte der DE-ROM (pack.asm)
   beutel_spalte = 13,
   -- JA/NEIN-Fenster (_YesNoBox): Lage x und Breite EN/DE, abweichende Aufruf-Lagen x,y EN → DE
-  -- (gen2_spielstand.py)
   ja_nein = { en_x = 14, en_w = 6, de_x = 13, de_w = 7, sichern = { 0, 7, 0, 9 }, wettbewerb = { 14, 7, 14, 9 } },
   -- Radiosender: *Name-Zeichenketten der DE-ROM (pokegear.asm, Bank $24, über „ld de“-Verweise)
   sender = { OAKS_POKEMON_TALK = { 0x24, 0x58DD }, POKEDEX_SHOW = { 0x24, 0x58EA }, POKEMON_MUSIC = { 0x24, 0x58F4 }, LUCKY_CHANNEL = { 0x24, 0x58FF }, UNOWN_RADIO = { 0x24, 0x590B }, PLACES_AND_PEOPLE = { 0x24, 0x5911 }, LETS_ALL_SING = { 0x24, 0x5921 }, POKE_FLUTE_RADIO = { 0x24, 0x5932 }, ROCKET_RADIO = { 0x24, 0x5921 }, EVOLUTION_RADIO = { 0x24, 0x590B }, BUENAS_PASSWORD = { 0x24, 0x57E2 } },
-  -- Pokédex-Modi: Beschreibung je Modus NEU/ALT/A-Z/ICOGNITO (gen2_dexmodi.py)
+  -- Pokédex-Modi: Beschreibung je Modus NEU/ALT/A-Z/ICOGNITO
   dexmodi = { { 16, 20094 }, { 16, 20119 }, { 16, 20142 }, { 16, 20166 } },
-  -- Skripttexte: EN-Schlüssel (Data.gen2Text) → DE-Schlüssel (Test/werkzeug/gen2_texte_paaren.py)
+  -- Skripttexte: EN-Schlüssel (Data.gen2Text) → DE-Schlüssel
   g2t = {
     ["00:26f2"] = "00:26dc",
     ["03:4d41"] = "03:4d41",
@@ -7441,12 +7493,50 @@ return {
     ["67:401f"] = "67:401f",
     ["69:5584"] = "69:5815",
   },
-  -- Platzhalter-Reihenfolge der DE-Texte (Test/werkzeug/gen2_puffer.py)
+  -- Platzhalter-Reihenfolge der DE-Texte: Label → Nummern der Port-Werte (ab 0) in deutscher Reihenfolge
   pf = {
+    ["_MartBoughtText"] = { 0, 2, 1 },
     ["_ItemStatRoseText"] = { 1, 0 },
     ["_PokemonSwapItemText"] = { 1, 0, 2 },
     ["_SeerTradeText"] = { 0, 1, 3, 4, 2 },
   },
+  -- Kampfmenü (normal / Käferwettbewerb): MenuHeader der DE-ROM, Spalte des Kastens und Spaltenabstand
   km2 = { normal = { 9, 20278 }, wettbewerb = { 9, 20375 } },
-  -- ohne DE-Gegenstück (Handbeleg): GetAnimatedFrontpic, GetChrisBackpic, GetMonBackpic, GetMonFrontpic, Music_PostCredits, TradeAnim_ShowFrontpic
+  -- Mengen, die der Port nicht mitgibt (gemeinsam.lua G.mengen_einhaengen): Zieltext → { Quelltext, Argument }
+  -- „Wegwerfen? {NUM} x {STRBUF}?“ merkt sich die Menge für „{NUM} x {STRBUF} (wurde) weggeworfen.“
+  mg = { ["~2bbb30170011"] = { "~c697a7eb0014", 1 }, ["~95da8dc00010"] = { "~c697a7eb0014", 1 } },
+  -- VM statt HM: Präfix in GetTMHMName (.HMText, bis @) und Buchstabe der TM-Tasche (tmhm.asm ld [hl], "V")
+  vm = { praefix = { 0, 0x34C6 }, tasche = { 11, 0x4A2C } },
+  -- Tastaturen (Bank 4): Namens-/Box-Tafeln (9 Zeichen je 17er-Zeile, dann die Umschaltzeile), Brief (10 je 19er)
+  tasten = { name_klein = { 4, 0x5CD5 }, box_klein = { 4, 0x5D2A }, name_gross = { 4, 0x5D90 },
+    box_gross = { 4, 0x5DE5 }, brief_gross = { 4, 0x61CB }, brief_klein = { 4, 0x623D } },
+  -- Geschlechtswahl (init_gender.asm): MenuHeader der DE-ROM (Flags, menu_coords y1 x1 y2 x2) – breiter für MÄDCHEN
+  geschlecht = { 18, 0x4D56 },
+  -- Karten-Flip, Münzfenster (CardFlip_PrintCoinBalance): hlcoord/ld b/ld c des Kastens, dann hlcoord der
+  -- Beschriftung (+10) und der Zahl (+19); der DE-Kasten ist breiter („MÜNZEN“)
+  muenzen = { 56, 0x449C, karte = 0xC4A0 },
+  -- Diplom (PlaceDiplomaOnScreen): ld de „TRAINER“, hlcoord, Name hinter dem Wort, hlcoord der Bestätigung
+  diplom = { 119, 0x5730, karte = 0xC4A0 },
+  -- Käferwettbewerb, Tausch-Bildschirm (ContestDropOffMons): hlcoord der Beschriftung „GESU“ und der KP-Zahl
+  kaefertausch = { gesu = { 51, 0x4039 }, kp = { 51, 0x407C }, karte = 0xC4A0 },
+  -- PC-Menüs (pokecenter_pc.asm): MenuHeader der DE-ROM (Flags, menu_coords y1 x1 y2 x2) – Zentrum- und Spieler-PC
+  pcmenue = { zentrum = { 5, 0x55D6 }, spieler = { 5, 0x5735 } },
+  -- Pokédex-Suche (PokedexTypeSearchStrings): 18 Felder zu 8 Zeichen + „@“, zuerst „  ----  “
+  dexsuche = { 16, 0x4FBE },
+  -- Statusseite 2 (stats_screen.asm): hlcoord des getragenen Items und die AP-Kacheln (ld [hl], $32 / ld [hl], $3E)
+  statusseite = { item = { 0x13, 0x615E }, karte = 0xC4A0, ap = { 0x14, 0x4CBA } },
+  -- Team-Untermenü (mon_submenu.asm MonSubmenu .MenuHeader: Flags, menu_coords y1 x1 y2 x2)
+  teammenue = { 9, 0x4D48 },
+  -- Brief schreiben: Umschlag (4 Kacheln 2bpp) und OBJ-Palette
+  briefsymbol = { gfx = { 4, 0x5EE2 }, pal = { 2, 0x7681 } },
+  -- Spielautomat: MenuHeader von Slots_AskBet (Flags, menu_coords y1 x1 y2 x2, Zeiger, Vorgabe, Flags, 3 Einträge)
+  einsatz = { 0x24, 0x70F5 },
+  -- Startmenü: Beschreibung der letzten Zeile (start_menu.asm .ExitDesc)
+  startmenue_ende = { 4, 0x67A9 },
+  -- Pokédex-Suche: OBJ (3×3 Kacheln ab Bank $10, Zeilen im Abstand $100), OBJ-Palette 0, Lage auf dem Schirm
+  suchbild = { gfx = { 0x10, 0x56A2 }, pal = { 2, 0x7681 }, x = 64, y = 72 },
+  -- Pokédex-Optionen: Pfeil beim Öffnen auf der ersten Zeile
+  dexoption_oben = true,
+  -- Statusbildschirm: Bild gespiegelt (stats_screen.asm, wBoxAlignment = 1)
+  status_spiegeln = true,
 }
